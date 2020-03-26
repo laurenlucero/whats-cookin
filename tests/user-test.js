@@ -228,9 +228,26 @@ describe('User', function() {
     expect(user.recipesToCook).to.deep.equal([recipe1, recipe3]);
   });
 
-  it.only('should tell user what ingredients they need to cook meal', function() {
-    expect(user.checkIngredients(recipe1.ingredients)).to.deep.equal([18372, 1123]);
+  it('should filter favorite recipes by type', function() {
+    user.addToFavorites(recipe1);
+    user.addToFavorites(recipe2);
+    user.addToFavorites(recipe3);
+    expect(user.filterFavByTag('snack')).to.deep.equal([recipe1]);
   });
-  // should determine whether pantry has enough ingredients to cook a meal
-  // should determine the amount of ingredients still needed to cook a given meal
+
+  it('should filter recipes to cook', function() {
+    user.addToRecipesToCook(recipe1);
+    user.addToRecipesToCook(recipe2);
+    user.addToRecipesToCook(recipe3);
+    expect(user.filterRecipeToCookByTag('snack')).to.deep.equal([recipe1]);
+  });
+
+
+  it.skip('should tell user what ingredients they need to cook meal', function() {
+    expect(user.checkIngredients(recipe1.ingredients)).to.deep.equal([18372, 1123]);
+    // should determine whether pantry has enough ingredients to cook a meal
+    // should determine the amount of ingredients still needed to cook a given meal
+  });
+
+
 });

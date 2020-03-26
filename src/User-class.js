@@ -27,6 +27,30 @@ class User {
     return this.recipesToCook;
   }
 
+  filterFavByTag(tag) {
+    let filteredRecipes =  this.favoriteRecipes.filter(recipe => {
+        return recipe.tags.includes(tag);
+
+    });
+    return filteredRecipes;
+  }
+
+  filterRecipeToCookByTag(tag) {
+    let filteredRecipes =  this.recipesToCook.filter(recipe => {
+        return recipe.tags.includes(tag);
+
+    });
+    return filteredRecipes;
+  }
+
+
+
+
+
+
+
+
+
   checkIngredients(recipeIngredients) {
     //we need to iterate through the recipe ingredients take in an array & get back out an array
     //we need to find out if each recipe ingredient is present in the pantry
@@ -44,6 +68,11 @@ class User {
     //   });
     // });
     // return ingredientsToBuy
+
+
+
 }
+
+
 
 module.exports = User;
