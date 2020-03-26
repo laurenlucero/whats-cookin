@@ -1,3 +1,8 @@
+const ingredientsData = require('../data/ingredients');
+const recipesData = require('../data/recipes');
+const usersData = require('../data/users');
+const Recipe = require('../src/Recipe-class');
+
 class User {
   constructor({name, id, pantry}) {
     this.name = name;
@@ -27,6 +32,78 @@ class User {
     return this.recipesToCook;
   }
 
+  filterFavByTag(tag) {
+    let filteredRecipes =  this.favoriteRecipes.filter(recipe => {
+        return recipe.tags.includes(tag);
+
+    });
+    return filteredRecipes;
+  }
+
+  filterRecipeToCookByTag(tag) {
+    let filteredRecipes =  this.recipesToCook.filter(recipe => {
+        return recipe.tags.includes(tag);
+
+    });
+    return filteredRecipes;
+  }
+
+  searchFavsByName(name) {
+    let searchedRecipe = this.favoriteRecipes.filter(recipe => {
+      return recipe.name.includes(name);
+    });
+    return searchedRecipe;
+  }
+
+  searchRecipesByName(name) {
+    let searchedRecipe = this.recipesToCook.filter(recipe => {
+      return recipe.name.includes(name);
+    });
+    return searchedRecipe;
+  }
+
+  searchFavsByIng(searchIng) {
+    let ingredientId = null;
+    ingredientsData.forEach((ing, i) => {
+      if (searchIng == ing.name) {
+        ingredientId = ing.id;
+      }
+    });
+    let foundRecipes = [];
+    this.favoriteRecipes.forEach(recipe => {
+      recipe.ingredients.forEach(item => {
+        if (ingredientId == item.id) {
+          foundRecipes.push(recipe);
+        }
+      });
+    });
+    return foundRecipes;
+  }
+
+  searchRecipesToCookByIng(searchIng) {
+    let ingredientId = null;
+    ingredientsData.forEach((ing, i) => {
+      if (searchIng == ing.name) {
+        ingredientId = ing.id;
+      }
+    });
+    let foundRecipes = [];
+    this.recipesToCook.forEach(recipe => {
+      recipe.ingredients.forEach(item => {
+        if (ingredientId == item.id) {
+          foundRecipes.push(recipe);
+        }
+      });
+    });
+    return foundRecipes;
+  }
+
+
+
+
+
+
+
   checkIngredients(recipeIngredients) {
     //we need to iterate through the recipe ingredients take in an array & get back out an array
     //we need to find out if each recipe ingredient is present in the pantry
@@ -44,6 +121,11 @@ class User {
     //   });
     // });
     // return ingredientsToBuy
+
+
+
 }
+
+
 
 module.exports = User;
