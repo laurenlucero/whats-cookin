@@ -1,3 +1,8 @@
+const ingredientsData = require('../data/ingredients');
+const recipesData = require('../data/recipes');
+const usersData = require('../data/users');
+const Recipe = require('../src/Recipe-class');
+
 class User {
   constructor({name, id, pantry}) {
     this.name = name;
@@ -57,7 +62,41 @@ class User {
     return searchedRecipe;
   }
 
+  searchFavsByIng(searchIng) {
+    let ingredientId = null;
+    ingredientsData.forEach((ing, i) => {
+      if (searchIng == ing.name) {
+        ingredientId = ing.id;
+      }
+    });
+    let foundRecipes = [];
+    this.favoriteRecipes.forEach(recipe => {
+      recipe.ingredients.forEach(item => {
+        if (ingredientId == item.id) {
+          foundRecipes.push(recipe);
+        }
+      });
+    });
+    return foundRecipes;
+  }
 
+  searchRecipesToCookByIng(searchIng) {
+    let ingredientId = null;
+    ingredientsData.forEach((ing, i) => {
+      if (searchIng == ing.name) {
+        ingredientId = ing.id;
+      }
+    });
+    let foundRecipes = [];
+    this.recipesToCook.forEach(recipe => {
+      recipe.ingredients.forEach(item => {
+        if (ingredientId == item.id) {
+          foundRecipes.push(recipe);
+        }
+      });
+    });
+    return foundRecipes;
+  }
 
 
 

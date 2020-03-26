@@ -106,6 +106,13 @@ describe('User', function() {
                   "amount": 1,
                   "unit": "tablespoon"
               }
+          },
+          {
+              "id": 1123,
+              "quantity": {
+                  "amount": 1,
+                  "unit": "large"
+              }
           }
       ],
     "instructions": [
@@ -254,6 +261,20 @@ describe('User', function() {
     user.addToRecipesToCook(recipe2);
     user.addToRecipesToCook(recipe3);
     expect(user.searchRecipesByName("Dirty Steve's Original Wing Sauce")).to.deep.equal([recipe3]);
+  });
+
+  it('should search favorite recipes by ingredient', function() {
+    user.addToFavorites(recipe1);
+    user.addToFavorites(recipe2);
+    user.addToFavorites(recipe3);
+    expect(user.searchFavsByIng('eggs')).to.deep.equal([recipe1, recipe2]);
+  });
+
+  it('should search recipes to cook by ingredient', function() {
+    user.addToRecipesToCook(recipe1);
+    user.addToRecipesToCook(recipe2);
+    user.addToRecipesToCook(recipe3);
+    expect(user.searchRecipesToCookByIng('eggs')).to.deep.equal([recipe1, recipe2]);
   });
 
   it.skip('should tell user what ingredients they need to cook meal', function() {
