@@ -43,6 +43,20 @@ class User {
     return filteredRecipes;
   }
 
+  searchFavsByName(name) {
+    let searchedRecipe = this.favoriteRecipes.filter(recipe => {
+      return recipe.name.includes(name);
+    });
+    return searchedRecipe;
+  }
+
+  searchRecipesByName(name) {
+    let searchedRecipe = this.recipesToCook.filter(recipe => {
+      return recipe.name.includes(name);
+    });
+    return searchedRecipe;
+  }
+
 
 
 

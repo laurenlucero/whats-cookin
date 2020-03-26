@@ -242,6 +242,19 @@ describe('User', function() {
     expect(user.filterRecipeToCookByTag('snack')).to.deep.equal([recipe1]);
   });
 
+  it('should search favorite recipes by name', function() {
+    user.addToFavorites(recipe1);
+    user.addToFavorites(recipe2);
+    user.addToFavorites(recipe3);
+    expect(user.searchFavsByName('Loaded Chocolate Chip Pudding Cookie Cups')).to.deep.equal([recipe1]);
+  });
+
+  it('should search recipes to cook by name', function() {
+    user.addToRecipesToCook(recipe1);
+    user.addToRecipesToCook(recipe2);
+    user.addToRecipesToCook(recipe3);
+    expect(user.searchRecipesByName("Dirty Steve's Original Wing Sauce")).to.deep.equal([recipe3]);
+  });
 
   it.skip('should tell user what ingredients they need to cook meal', function() {
     expect(user.checkIngredients(recipe1.ingredients)).to.deep.equal([18372, 1123]);
