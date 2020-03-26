@@ -26,6 +26,10 @@ describe('User', function() {
           {
             "ingredient": 1082047,
             "amount": 10
+          },
+          {
+            "ingredient": 20081,
+            "amount": 5
           }
         ]
       });
@@ -182,6 +186,10 @@ describe('User', function() {
       {
         "ingredient": 1082047,
         "amount": 10
+      },
+      {
+        "ingredient": 20081,
+        "amount": 5
       }
     ]);
   });
@@ -194,12 +202,12 @@ describe('User', function() {
     expect(user.recipesToCook).to.deep.equal([]);
   });
 
-  it('should be able to add recipe to favorite recipes', function() {
+  it('should add recipe to favorite recipes', function() {
     user.addToFavorites(recipe1);
     expect(user.favoriteRecipes).to.deep.equal([recipe1]);
   });
 
-  it('should be able to remove recipe from favorite recipes', function() {
+  it('should remove recipe from favorite recipes', function() {
     user.addToFavorites(recipe1);
     user.addToFavorites(recipe2);
     user.addToFavorites(recipe3);
@@ -207,16 +215,22 @@ describe('User', function() {
     expect(user.favoriteRecipes).to.deep.equal([recipe1, recipe3]);
   });
 
-  it('should be able to add recipe to recipes to cook', function() {
+  it('should add recipe to recipes to cook', function() {
     user.addToRecipesToCook(recipe1);
     expect(user.recipesToCook).to.deep.equal([recipe1]);
   });
 
-  it('should be able to remove recipe from recipes to cook', function() {
+  it('should remove recipe from recipes to cook', function() {
     user.addToRecipesToCook(recipe1);
     user.addToRecipesToCook(recipe2);
     user.addToRecipesToCook(recipe3);
     user.removeFromRecipesToCook(recipe2);
     expect(user.recipesToCook).to.deep.equal([recipe1, recipe3]);
   });
+
+  it.only('should tell user what ingredients they need to cook meal', function() {
+    expect(user.checkIngredients(recipe1.ingredients)).to.deep.equal([18372, 1123]);
+  });
+  // should determine whether pantry has enough ingredients to cook a meal
+  // should determine the amount of ingredients still needed to cook a given meal
 });

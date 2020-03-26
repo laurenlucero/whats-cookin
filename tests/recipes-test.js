@@ -129,7 +129,7 @@ describe('Recipe', function() {
       ]);
   });
 
-  it('should be able to get the correct ingredients id\'s', function() {
+  it('should get the correct ingredients id\'s', function() {
     recipe1.matchIngredientsIds();
     expect(recipe1.matchIngredientsIds()).to.deep.equal([{
       "id": 20081,
@@ -148,7 +148,7 @@ describe('Recipe', function() {
     }]);
   })
 
-  it('should be able to get the total cost of ingredients needed to make recipe', function() {
+  it('should get the total cost of ingredients needed to make recipe', function() {
     recipe1.getIngredientsCost();
     expect(recipe1.getIngredientsCost()).to.equal(1196);
   });
@@ -170,6 +170,7 @@ describe('Recipe', function() {
           }
       ]);
   });
+
   // it should have a quantity - just in the recipe?
       // which holds the amount and the meassuring unit
 });

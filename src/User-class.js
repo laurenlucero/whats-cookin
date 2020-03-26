@@ -27,7 +27,23 @@ class User {
     return this.recipesToCook;
   }
 
-// compare what ingredients are called for in recipe to ingredients user has in their pantry
+  checkIngredients(recipeIngredients) {
+    //we need to iterate through the recipe ingredients take in an array & get back out an array
+    //we need to find out if each recipe ingredient is present in the pantry
+    //1 //if it's not present in the pantry we need to add the full amount to ingredientsToBuy
+    //2 //if it's present but there's not enough, we need to add the difference to ingredientsToBuy
+    //3 //if it's present and there's enough, we are good to go
+  }
+
+    // let ingredientsToBuy = [];
+    // recipeIngredients.forEach(ingredient => {
+    //   this.pantry.forEach(item => {
+    //     if(item.ingredient !== ingredient.id) {
+    //       ingredientsToBuy.push(ingredient.id)
+    //     }
+    //   });
+    // });
+    // return ingredientsToBuy
 }
 
 module.exports = User;
