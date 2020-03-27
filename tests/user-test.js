@@ -277,11 +277,10 @@ describe('User', function() {
     expect(user.searchRecipesToCookByIng('eggs')).to.deep.equal([recipe1, recipe2]);
   });
 
-  it.skip('should tell user what ingredients they need to cook meal', function() {
+  it('should tell user what ingredients they need to cook meal', function() {
     expect(user.checkIngredients(recipe1.ingredients)).to.deep.equal([18372, 1123]);
-    // should determine whether pantry has enough ingredients to cook a meal
-    // should determine the amount of ingredients still needed to cook a given meal
   });
 
-
+  // should determine whether pantry has enough ingredients to cook a meal
+  // should determine the amount of ingredients still needed to cook a given meal
 });
