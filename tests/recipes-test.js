@@ -170,7 +170,4 @@ describe('Recipe', function() {
           }
       ]);
   });
-
-  // it should have a quantity - just in the recipe?
-      // which holds the amount and the meassuring unit
 });
