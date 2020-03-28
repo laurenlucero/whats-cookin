@@ -4,6 +4,77 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
 }
-/* font-family: 'Spicy Rice', cursive;
-font-family: 'Nunito Sans', sans-serif; */
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+h1 {
+  font-family: 'Spicy Rice', cursive;
+}
+
+/* nav bar */
+
+nav {
+
+}
+
+h2 {
+
+}
+
+.search-and-filter {
+
+}
+
+.search-input-holder {
+
+}
+
+.search-icon {
+
+}
+
+.search-input {
+
+}
+
+.heart-btn {
+
+}
+
+.cook-later-btn {
+
+}
+
+/* main holder */
+
+main {
+
+}
+
+.recipe-card {
+
+}
+
+.recipe-image-n-btns {
+
+}
+
+.bookmark-unchecked {
+
+}
+
+.heart-unchecked {
+
+}
+
+.recipe-img {
+
+}
+
+.recipe-name {
+
+}

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Spicy+Rice&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Whats Cookin</title>
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,700|Spicy+Rice&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/fe7d112008.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -11,20 +12,20 @@
     <nav>
       <h2 class="user-name">Billy Bob</h2>
       <div class="search-and-filter">
-        <div class="search-input">
-          <i class="fas fa-search"></i>
-          <input type="text" placeholder="Search">
+        <div class="search-input-holder">
+          <i class="fas fa-search search-icon"></i>
+          <input class="search-input" type="text" placeholder="Search">
         </div>
-        <i class="fas fa-heart"></i>
-        <i class="fas fa-bookmark"></i>
+        <i class="fas fa-heart heart-btn"></i>
+        <i class="fas fa-bookmark cook-later-btn"></i>
       </div>
     </nav>
     <main>
       <section class="recipe-card">
         <div class="recipe-image-n-btns">
-          <i class="far fa-bookmark"></i>
-          <i class="far fa-heart"></i>
-          <img src="https://spoonacular.com/recipeImages/595736-556x370.jpg" alt="recipe image">
+          <i class="far fa-bookmark bookmark-unchecked"></i>
+          <i class="far fa-heart heart-unchecked"></i>
+          <img class="recipe-img" src="https://spoonacular.com/recipeImages/595736-556x370.jpg" alt="recipe image">
         </div>
         <h3 class="recipe-name">Loaded Chocolate Chip Pudding Cookie Cups</h3>
       </section>
