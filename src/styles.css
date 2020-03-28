@@ -4,33 +4,56 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
 }
 
 body {
+  background-color: #FFC065;
   font-family: 'Nunito Sans', sans-serif;
+  margin: 0;
+}
+
+header {
+  background-color: #C70039;
+  margin: 0;
+  padding: 0;
+  padding: 1em;
+  width: 100vw;
 }
 
 h1 {
   font-family: 'Spicy Rice', cursive;
+  display: flex;
+  padding: 0;
+  justify-content: center;
+  margin: 0;
 }
 
 /* nav bar */
 
 nav {
-
+ display: flex;
+ justify-content: space-between;
 }
 
 h2 {
-
+  padding-left: 1em;
 }
 
-.search-and-filter {
-
+.search-n-filter {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+  padding-right: 1em;
 }
 
 .search-input-holder {
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 18em;
+  height: 2em;
 }
 
 .search-icon {
@@ -38,41 +61,61 @@ h2 {
 }
 
 .search-input {
-
+  width: 100%;
+  font-family: 'Nunito Sans', sans-serif;
+  border-radius: .2em;
+  padding: .3em;
 }
 
 .heart-btn {
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 11em;
+  height: 2em;
 }
 
-.cook-later-btn {
+.bookmark-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 11em;
+  height: 2em;
+}
 
+.fas {
+  margin-right: .3em;
 }
 
 /* main holder */
 
-main {
+.far {
+}
 
+main {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .recipe-card {
-
+  width: 30%;
+  background-color: white;
+  margin-bottom: 1em;
+  border-radius: .2em;
 }
 
-.recipe-image-n-btns {
-
-}
-
-.bookmark-unchecked {
-
-}
-
-.heart-unchecked {
-
+.name-n-btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .recipe-img {
-
+  width: 100%;
+  border-radius: .2em .2em 0 0;
 }
 
 .recipe-name {
