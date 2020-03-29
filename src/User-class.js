@@ -96,19 +96,39 @@ class User {
     return foundRecipes;
   }
 
-  checkIngredients(recipeIngredients) {
+  checkIngredientsToBuy(recipe) {
     let ingredientsToBuy = [];
-    recipeIngredients.forEach(ingredient => {
-      let matchingItems = this.pantry.find(item => {
-        return item.ingredient === ingredient.id
+    return recipe.ingredients.map(ingredient => {
+      let currentItem;
+      ingredientsToBuy = this.pantry.forEach(item => {
+        if (ingredient.id === item.ingredient) {
+          currentItem = item;
+        }
       });
-      if (!matchingItems) {
-        ingredientsToBuy.push(ingredient.id)
-      }
+      return currentItem;
     });
+    console.log(ingredientsToBuy);
     return ingredientsToBuy;
-    }
   }
+
+  checkIngredientsAmount(recipe) {
+    let amountToBuy = [];
+    let ingredientsToBuy = this.checkIngredientsToBuy(recipe);
+    ingredientsToBuy.forEach((ingredient, i) => {
+      let currentIngredient = {};
+      if (ingredient === undefined) {
+        currentIngredient.id = recipe.ingredients[i].id;
+        currentIngredient.missingAmount = recipe.ingredients[i].quantity.amount;
+        amountToBuy.push(currentIngredient);
+      } else if (recipe.ingredients[i].quantity.amount - ingredient.amount > 0) {
+        currentIngredient.id = ingredient.ingredient;
+        currentIngredient.missingAmount = recipe.ingredients[i].quantity.amount - ingredient.amount;
+        amountToBuy.push(currentIngredient);
+      }
+    })
+    return amountToBuy;
+  }
+}
 
 if (typeof module !== 'undefined') {
   module.exports = User;
