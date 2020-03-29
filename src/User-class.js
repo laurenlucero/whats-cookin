@@ -107,11 +107,10 @@ class User {
       });
       return currentItem;
     });
-    console.log(ingredientsToBuy);
     return ingredientsToBuy;
   }
 
-  checkIngredientsAmount(recipe) {
+  checkAmountToBuy(recipe) {
     let amountToBuy = [];
     let ingredientsToBuy = this.checkIngredientsToBuy(recipe);
     ingredientsToBuy.forEach((ingredient, i) => {
@@ -128,7 +127,23 @@ class User {
     })
     return amountToBuy;
   }
+
+  getMissingIngPrices(recipe) {
+    let ingredientsCosts = this.checkAmountToBuy(recipe);
+    let unownedIngredients = []
+    let disrighthere = ingredientsCosts.forEach(ingredient => {
+      ingredientsData.forEach(ingData => {
+        if(ingredient.id === ingData.id){
+          unownedIngredients.push(ingData.estimatedCostInCents)
+        }
+      })
+    })
+     return unownedIngredients.reduce((acc, ing) => {
+       return acc += ing
+    }, 0);
+  }
 }
+
 
 if (typeof module !== 'undefined') {
   module.exports = User;
