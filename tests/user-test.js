@@ -282,7 +282,11 @@ describe('User', function() {
   });
 
   it('should tell the user how much ingredient they are missing in their pantry to make recipe', function() {
-    expect(user.checkIngredientsAmount(recipe1)).to.deep.equal([{id: 18372, missingAmount: 0.5}, {id: 1123, missingAmount: 1}]);
+    expect(user.checkAmountToBuy(recipe1)).to.deep.equal([{id: 18372, missingAmount: 0.5}, {id: 1123, missingAmount: 1}]);
+  });
+
+  it('should let the user know how much the missing ingredients will cost them', function() {
+    expect(user.getMissingIngPrices(recipe1)).to.equal(1054)
   });
 
   // should determine whether pantry has enough ingredients to cook a meal
