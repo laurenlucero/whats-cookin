@@ -1,5 +1,6 @@
-const ingredientsData = require('../data/ingredients');
-const Recipe = require('../src/Recipe-class');
+if (typeof module !== 'undefined') {
+  ingredientsData = require('../data/ingredients');
+}
 
 class User {
   constructor({name, id, pantry}) {
@@ -143,7 +144,6 @@ class User {
     }, 0);
   }
 }
-
 
 if (typeof module !== 'undefined') {
   module.exports = User;
