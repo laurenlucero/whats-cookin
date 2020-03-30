@@ -1,11 +1,14 @@
+let allRecipes = [];
+
 window.addEventListener('load', function() {
   displayAllRecipes();
+  displayUserData();
 });
 
 function displayAllRecipes() {
   let mainPage = document.querySelector('.main-page');
-  recipeData.forEach(recipe => {
-    let newRecipe = new Recipe(recipe);
+  allRecipes = recipeData.map(recipe => {
+  let newRecipe = new Recipe(recipe);
     mainPage.innerHTML += `<section class="recipe-card">
       <img class="recipe-img" src=${newRecipe.image} alt=${newRecipe.name}>
       <div class="name-n-btns">
@@ -14,11 +17,15 @@ function displayAllRecipes() {
       <i class="far fa-bookmark"></i>
       <div>
     </section>`
+    return newRecipe
  });
 }
 
-// display user data on home page
-// assign random user based on index
-// let chosen user be new instance of user with random user
+function displayUserData() {
+  let randomUser = usersData[Math.floor(Math.random() * usersData.length)];
+  let currentUser = new User(randomUser);
+  const userName = document.querySelector('.user-name');
+  userName.innerHTML = `${currentUser.name}`;
+}
 
 // user to add/remove favorites
