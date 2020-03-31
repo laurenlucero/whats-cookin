@@ -13,13 +13,6 @@ class User {
 
   addToFavorites(recipe) {
     this.favoriteRecipes.push(recipe);
-    let favorited;
-    if (this.favoriteRecipes.includes(recipe)) {
-      favorited = true;
-    } else {
-      favorited = false;
-    }
-    return favorited;
   }
 
   removeFromFavorites(recipe) {

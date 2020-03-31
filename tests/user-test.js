@@ -212,7 +212,6 @@ describe('User', function() {
   it('should add recipe to favorite recipes', function() {
     user.addToFavorites(recipe1);
     expect(user.favoriteRecipes).to.deep.equal([recipe1]);
-    expect(user.addToFavorites(recipe1)).to.equal(true);
   });
 
   it('should remove recipe from favorite recipes', function() {
@@ -289,7 +288,4 @@ describe('User', function() {
   it('should let the user know how much the missing ingredients will cost them', function() {
     expect(user.getMissingIngPrices(recipe1)).to.equal(1054)
   });
-
-  // should determine whether pantry has enough ingredients to cook a meal
-  // should determine the amount of ingredients still needed to cook a given meal
 });

@@ -27,13 +27,10 @@ function displayAllRecipes() {
       <i class="far fa-heart unchecked-heart"></i>
       <i class="far fa-bookmark" id="unchecked-bookmark"></i>
       <div>
-    </section>`
-    return newRecipe
+    </section>`;
+    return newRecipe;
  });
 }
-
-// recipe.favorite ? fas fa-heart : far fa-heart
-//style="display:none;"
 
 function displayUserData() {
   let randomUser = usersData[Math.floor(Math.random() * usersData.length)];
@@ -45,14 +42,11 @@ function displayUserData() {
 function addRecipeToFavs(event) {
   event.target.classList.remove('far', 'fa-heart', 'unchecked-heart');
   event.target.classList.add('fas', 'fa-heart', 'checked-heart');
-  // console.log(event.target.parentElement.parentElement)
-  // currentUser.addToFavorites(recipe);
-  // console.log(currentUser.favoriteRecipes);
-  // add the actual recipe that was clicked on to the fav recipe array
-  // iterate through the recipes and compare the name of the recipe that was clicked
-  // is all the recipe names that in the data
-  // if matched, invoke the user.addfav method
-
+  let clickedRecipe = allRecipes.find(recipe => {
+    recipe.name === event.target.parentElement.children[0].innerText;
+      return recipe;
+  })
+    currentUser.addToFavorites(clickedRecipe);
 }
 
 function removeRecipeFromFavs(event) {
