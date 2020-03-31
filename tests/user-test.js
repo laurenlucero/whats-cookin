@@ -212,6 +212,7 @@ describe('User', function() {
   it('should add recipe to favorite recipes', function() {
     user.addToFavorites(recipe1);
     expect(user.favoriteRecipes).to.deep.equal([recipe1]);
+    expect(user.addToFavorites(recipe1)).to.equal(true);
   });
 
   it('should remove recipe from favorite recipes', function() {
