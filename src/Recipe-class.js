@@ -2,6 +2,8 @@ if (typeof module !== 'undefined') {
   ingredientsData = require('../data/ingredients');
 }
 
+// const mockData = require('../data/mock-data');
+
 class Recipe {
   constructor({id, image, ingredients, instructions, name, tags}) {
     this.id = id;
@@ -30,6 +32,14 @@ class Recipe {
 
   getInstructions() {
     return this.instructions;
+  }
+
+  filterRecipes(tag) {
+    let filteredRecipes =  recipesData.filter(recipe => {
+        return recipe.tags.includes(tag);
+
+    });
+    return filteredRecipes;
   }
 }
 

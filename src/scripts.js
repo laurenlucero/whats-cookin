@@ -20,6 +20,7 @@ function displayAllRecipes() {
     return newRecipe
  });
 }
+// change function name ^ to match return?
 
 function displayUserData() {
   let randomUser = usersData[Math.floor(Math.random() * usersData.length)];
