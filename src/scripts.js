@@ -91,7 +91,7 @@ function removeFromRecipesToCook(event) {
     if (event.target.parentElement.children[0].innerText === recipe.name) {
       return recipe;
     }
-  })
+  });
   currentUser.removeFromRecipesToCook(clickedRecipe);
 }
 
@@ -100,7 +100,7 @@ function gatherRecipeCardDataToDisplay(event) {
     if (event.target.src === recipe.image) {
       return recipe;
     }
-  })
+  });
   bringUserToSingleRecipePage(recipeCard);
 }
 
