@@ -24,6 +24,8 @@ function clickHandler(event) {
     removeFromRecipesToCook(event);
   } else if (event.target.classList.contains('recipe-img')) {
     gatherRecipeCardDataToDisplay(event);
+  } else if (event.target.classList.contains('back-to-home-btn')) {
+    bringUserBackToAllRecipesPage(event);
   }
 }
 
@@ -100,9 +102,6 @@ function gatherRecipeCardDataToDisplay(event) {
     }
   })
   bringUserToSingleRecipePage(recipeCard);
-
-  // invoke method that displays the recipe mainPage
-  // that includes all needed info.
 }
 
 function bringUserToSingleRecipePage(recipeCard) {
@@ -140,7 +139,7 @@ function bringUserToSingleRecipePage(recipeCard) {
   getRecipeIngNames(recipeCard);
   getMeasurementOfIng(recipeCard);
   displayRecipeInstructions(recipeCard);
-  // displayMissingIngredients(recipeCard);
+  displayMissingIngredients(recipeCard);
 }
 
 function getRecipeIngNames(recipeCard) {
@@ -158,28 +157,8 @@ function getMeasurementOfIng(recipeCard) {
   ingAmounts = document.querySelector('.ing-amounts');
   recipeCard.ingredients.map(ing => {
     ingAmounts.insertAdjacentHTML('beforeend', `<li>${ing.quantity.amount} ${ing.quantity.unit}</li>`)
-  })
-
-  // let amount = recipeCard.ingredients.map(ing => {
-  //   return ing.quantity.amount;
-  // });
-  // let unit = recipeCard.ingredients.map(ing => {
-  //   return ing.quantity.unit;
-  // });
-
+  });
 }
-
-
-
-// function combineRecipeIngInfo() {
-//
-// }
-
-//make a 3rd function
-//invoke that 3rd function at end of bringUserToSingleRecipePage
-//marry the data from recipeData and recipeCard
-//invoke that getRecipeNames with new combined ingData
-//dive in the interpolation to present new data
 
 function displayRecipeInstructions(recipeCard) {
   instructionsHolder = document.querySelector('.instructions-holder');
@@ -195,11 +174,9 @@ function displayRecipeInstructions(recipeCard) {
 function displayMissingIngredients(recipeCard) {
   missingIng = document.querySelector('.ingredients-missing');
   let ingredientsToBuy = currentUser.checkAmountToBuy(recipeCard);
-  console.log('ingtobuy', ingredientsToBuy);
   let ingId = ingredientsToBuy.map(ing => {
     return ing.id;
   });
-  console.log('whole thing:', ingId)
   return ingId.map(ing => {
     return ingredientsData.filter(ingData => {
       if (ingData.id === ing.id) {
@@ -209,21 +186,11 @@ function displayMissingIngredients(recipeCard) {
   });
   }).flat();
     console.log('name', ingName);
-
-  // let ingredientNames = recipeCard.matchIngredientsIds();
-  // let allIngNames = ingredientNames.map(ing => {
-  //   return ing.name;
-  // })
-  // allIngNames.map(ing => {
-  //   missingIng.insertAdjacentHTML('beforeend', `<li>${ing}:</li>`);
-  // })
+    // getting a list of ingredient ids saved to ingredientsToBuy
+    // trying to get ids matched to names, returning empty array
 }
 
-// function getRecipeInstructions() {
-//
-// }
-
-// function bringUserBackToAllRecipesPage() {
-//   // upon click of the 'back to recipes page'
-//   // clears single recipe page and brings user back to main recipe lists page
-// }
+function bringUserBackToAllRecipesPage(event) {
+  recipePage.innerHTML = '';
+  displayAllRecipes();
+}
