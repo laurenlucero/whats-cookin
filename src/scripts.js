@@ -17,6 +17,8 @@ function clickHandler(event) {
     addToRecipesToCook(event);
   } else if (event.target.classList.contains('checked-bookmark')) {
     removeFromRecipesToCook(event);
+  } else if (event.target.classList.contains('recipe-img')) {
+    gatherRecipeCardDataToDisplay(event);
   }
 }
 
@@ -80,9 +82,33 @@ function removeFromRecipesToCook(event) {
   event.target.classList.remove('fas', 'fa-bookmark', 'checked-bookmark');
   event.target.classList.add('far', 'fa-bookmark', 'unchecked-bookmark');
   let clickedRecipe = allRecipes.find(recipe => {
-    if (recipe.name === event.target.parentElement.children[0].innerText) {
+    if (event.target.parentElement.children[0].innerText === recipe.name) {
       return recipe;
     }
   })
   currentUser.removeFromRecipesToCook(clickedRecipe);
+}
+
+function gatherRecipeCardDataToDisplay(event) {
+  let recipeCard = allRecipes.find(recipe => {
+    if (event.target.src === recipe.image) {
+      return recipe;
+    }
+  })
+
+  // invoke method that displays the recipe mainPage
+  // that includes all needed info.
+}
+
+function bringUserToRecipePage(recipeCard) {
+  // change main page to live inside of a section -> move css styling over from main page to the section
+  // replace recipe card main to also be a section -> same as above
+  // edit recipe page to include a btn to bring user back to main page
+  // target main page and interpolate recipe page
+  // including all interpolation of data
+}
+
+function bringUserBackToRecipePage() {
+  // upon click of the 'back to recipes page'
+  // clears single recipe page and brings user back to main recipe lists page
 }
