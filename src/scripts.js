@@ -13,6 +13,10 @@ function clickHandler(event) {
     addRecipeToFavs(event);
   } else if (event.target.classList.contains('checked-heart')) {
     removeRecipeFromFavs(event);
+  } else if (event.target.classList.contains('unchecked-bookmark')) {
+    addToRecipesToCook(event);
+  } else if (event.target.classList.contains('checked-bookmark')) {
+    removeFromRecipesToCook(event);
   }
 }
 
@@ -25,7 +29,7 @@ function displayAllRecipes() {
       <div class="name-n-btns">
       <h4 class="recipe-name">${newRecipe.name}</h4>
       <i class="far fa-heart unchecked-heart"></i>
-      <i class="far fa-bookmark" id="unchecked-bookmark"></i>
+      <i class="far fa-bookmark unchecked-bookmark"></i>
       <div>
     </section>`;
     return newRecipe;
@@ -59,4 +63,26 @@ function removeRecipeFromFavs(event) {
     }
   })
   currentUser.removeFromFavorites(clickedRecipe);
+}
+
+function addToRecipesToCook(event) {
+  event.target.classList.remove('far', 'fa-bookmark', 'unchecked-bookmark');
+  event.target.classList.add('fas', 'fa-bookmark', 'checked-bookmark');
+  let clickedRecipe = allRecipes.find(recipe => {
+    if(event.target.parentElement.children[0].innerText === recipe.name) {
+      return recipe;
+    }
+  })
+  currentUser.addToRecipesToCook(clickedRecipe);
+}
+
+function removeFromRecipesToCook(event) {
+  event.target.classList.remove('fas', 'fa-bookmark', 'checked-bookmark');
+  event.target.classList.add('far', 'fa-bookmark', 'unchecked-bookmark');
+  let clickedRecipe = allRecipes.find(recipe => {
+    if (recipe.name === event.target.parentElement.children[0].innerText) {
+      return recipe;
+    }
+  })
+  currentUser.removeFromRecipesToCook(clickedRecipe);
 }

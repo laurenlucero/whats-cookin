@@ -8,6 +8,7 @@ describe('Recipe', function() {
 
   let recipe;
   let ingredient;
+  let mockRecipes;
 
   beforeEach(function() {
 
@@ -146,7 +147,7 @@ describe('Recipe', function() {
       "name": "eggs",
       "estimatedCostInCents": 472
     }]);
-  })
+  });
 
   it('should get the total cost of ingredients needed to make recipe', function() {
     recipe1.getIngredientsCost();
@@ -170,4 +171,9 @@ describe('Recipe', function() {
           }
       ]);
   });
+
+// should be able to view a list of recipes and filter recipes by tag
+
+// should be able to search recipes by ingredients
+
 });
