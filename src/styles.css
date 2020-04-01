@@ -154,6 +154,16 @@ h3 {
   margin-bottom: -5%;
 }
 
+.ing-amounts-holder {
+  width: 13em;
+}
+
+.ing-amounts {
+  list-style-type: none;
+  padding-top: 0.9em;
+  padding-left: 0.5em;  
+}
+
 .missing-ing-dets {
   padding-left: 2.5em;
 }

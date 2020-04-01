@@ -4,6 +4,7 @@ let mainPage = document.querySelector('.main-page');
 let recipePage = document.querySelector('.recipe-page');
 let allIngredients;
 let instructionsHolder;
+let missingIng;
 
 document.addEventListener('click', clickHandler);
 
@@ -118,10 +119,15 @@ function bringUserToSingleRecipePage(recipeCard) {
           <ul class="all-ingredients">
           </ul>
         </div>
+        <div class="ing-amounts-holder">
+          <ul class="ing-amounts">
+          </ul>
+        </div>
       </div>
       <div class="missing-ing-dets">
         <p class="missing-ing">Your Missing Ingredients:</p>
-        <p class="ingredients-missing">Egg, bicarbonate of soda</p>
+        <ul class="ingredients-missing">
+        </ul>
       </div>
       </section>
     </div>
@@ -134,6 +140,7 @@ function bringUserToSingleRecipePage(recipeCard) {
   getRecipeIngNames(recipeCard);
   getMeasurementOfIng(recipeCard);
   displayRecipeInstructions(recipeCard);
+  // displayMissingIngredients(recipeCard);
 }
 
 function getRecipeIngNames(recipeCard) {
@@ -141,24 +148,32 @@ function getRecipeIngNames(recipeCard) {
   let ingredientNames = recipeCard.matchIngredientsIds();
   let allIngNames = ingredientNames.map(ing => {
     return ing.name;
-  })
+  });
   allIngNames.map(ing => {
     allIngredients.insertAdjacentHTML('beforeend', `<li>${ing}:</li>`);
-  })
+  });
 }
 
 function getMeasurementOfIng(recipeCard) {
-  let amount = recipeCard.ingredients.map(ing => {
-    return ing.quantity.amount;
+  ingAmounts = document.querySelector('.ing-amounts');
+  recipeCard.ingredients.map(ing => {
+    ingAmounts.insertAdjacentHTML('beforeend', `<li>${ing.quantity.amount} ${ing.quantity.unit}</li>`)
   })
-  let unit = recipeCard.ingredients.map(ing => {
-    return ing.quantity.unit;
-  })
+
+  // let amount = recipeCard.ingredients.map(ing => {
+  //   return ing.quantity.amount;
+  // });
+  // let unit = recipeCard.ingredients.map(ing => {
+  //   return ing.quantity.unit;
+  // });
+
 }
 
-function combineRecipeIngInfo() {
 
-}
+
+// function combineRecipeIngInfo() {
+//
+// }
 
 //make a 3rd function
 //invoke that 3rd function at end of bringUserToSingleRecipePage
@@ -171,22 +186,43 @@ function displayRecipeInstructions(recipeCard) {
   let instructions = recipeCard.getInstructions();
   let allInstructions = instructions.map(inst => {
     return inst.instruction;
-  })
+  });
   allInstructions.map(item => {
     instructionsHolder.insertAdjacentHTML('beforeend', `<li>${item}</li>`);
-  })
+  });
 }
 
-// function combineIngWithQuantity(recipeCard) {
+function displayMissingIngredients(recipeCard) {
+  missingIng = document.querySelector('.ingredients-missing');
+  let ingredientsToBuy = currentUser.checkAmountToBuy(recipeCard);
+  console.log('ingtobuy', ingredientsToBuy);
+  let ingId = ingredientsToBuy.map(ing => {
+    return ing.id;
+  });
+  console.log('whole thing:', ingId)
+  return ingId.map(ing => {
+    return ingredientsData.filter(ingData => {
+      if (ingData.id === ing.id) {
+        let ingName = ingData.name;
+      }
+      return ingName;
+  });
+  }).flat();
+    console.log('name', ingName);
 
-  // return `${getRecipeIngNames(recipeCard)}`
-// }
+  // let ingredientNames = recipeCard.matchIngredientsIds();
+  // let allIngNames = ingredientNames.map(ing => {
+  //   return ing.name;
+  // })
+  // allIngNames.map(ing => {
+  //   missingIng.insertAdjacentHTML('beforeend', `<li>${ing}:</li>`);
+  // })
+}
 
-// ${getMeasurementOfIng(recipeCard)
 // function getRecipeInstructions() {
 //
 // }
-//
+
 // function bringUserBackToAllRecipesPage() {
 //   // upon click of the 'back to recipes page'
 //   // clears single recipe page and brings user back to main recipe lists page
