@@ -114,16 +114,12 @@ h2 {
   width: 100%;
 }
 
-.fa-heart {
-  cursor: pointer;
-}
-
+.fa-heart,
 .fa-bookmark {
   cursor: pointer;
 }
 
 /* recipe page */
-
 
 .recipe {
   display: flex;
@@ -175,4 +171,10 @@ h3 {
 .instructions {
   padding-left: 0.3em;
   padding-top: 0.4em;
+}
+
+.back-to-home-btn {
+  font-size: 1em;
+  margin-left: 2em;
+  width: 9em;
 }

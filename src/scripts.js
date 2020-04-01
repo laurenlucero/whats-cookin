@@ -1,5 +1,8 @@
 let allRecipes = [];
 let currentUser;
+let mainPage = document.querySelector('.main-page');
+let recipePage = document.querySelector('.recipe-page');
+let allIngredients;
 
 document.addEventListener('click', clickHandler);
 
@@ -23,7 +26,6 @@ function clickHandler(event) {
 }
 
 function displayAllRecipes() {
-  let mainPage = document.querySelector('.main-page');
   allRecipes = recipeData.map(recipe => {
   let newRecipe = new Recipe(recipe);
     mainPage.innerHTML += `<section class="recipe-card">
@@ -95,20 +97,86 @@ function gatherRecipeCardDataToDisplay(event) {
       return recipe;
     }
   })
+  bringUserToSingleRecipePage(recipeCard);
 
   // invoke method that displays the recipe mainPage
   // that includes all needed info.
 }
 
-function bringUserToRecipePage(recipeCard) {
-  // change main page to live inside of a section -> move css styling over from main page to the section
-  // replace recipe card main to also be a section -> same as above
-  // edit recipe page to include a btn to bring user back to main page
-  // target main page and interpolate recipe page
-  // including all interpolation of data
+function bringUserToSingleRecipePage(recipeCard) {
+  mainPage.innerHTML = '';
+  recipePage.innerHTML = `<section class="recipe">
+    <img class="selected-recipe-img" src=${recipeCard.image} alt=${recipeCard.name}>
+    <div class="all-recipe-dets">
+      <h3>${recipeCard.name} <i class="far fa-heart"></i>
+      <i class="far fa-bookmark"></i></h3>
+      <section class="recipe-details">
+      <div class="recipe-details">
+        <div class="ing-list">
+          <p class="ing-needed">Ingredients Needed:</p>
+          <ul class="all-ingredients">
+          </ul>
+        </div>
+      </div>
+      <div class="missing-ing-dets">
+        <p class="missing-ing">Your Missing Ingredients:</p>
+        <p class="ingredients-missing">Egg, bicarbonate of soda</p>
+      </div>
+      </section>
+    </div>
+  </section>
+  <div class="instructions">
+    <ol class="instructions-holder">
+      <li>${recipeCard.instructions}</li>
+    </ol>
+  </div>
+  <input class="back-to-home-btn" type="button" value="See all recipes">`
+  getRecipeIngNames(recipeCard);
+  getMeasurementOfIng(recipeCard);
 }
 
-function bringUserBackToRecipePage() {
-  // upon click of the 'back to recipes page'
-  // clears single recipe page and brings user back to main recipe lists page
+function getRecipeIngNames(recipeCard) {
+  allIngredients = document.querySelector('.all-ingredients');
+  let ingredientNames = recipeCard.matchIngredientsIds();
+  let allIngNames = ingredientNames.map(ing => {
+    return ing.name;
+  })
+  allIngNames.map(ing => {
+    allIngredients.insertAdjacentHTML('beforeend', `<li>${ing}:</li>`);
+  })
 }
+
+function getMeasurementOfIng(recipeCard) {
+  let amount = recipeCard.ingredients.map(ing => {
+    return ing.quantity.amount;
+  })
+  let unit = recipeCard.ingredients.map(ing => {
+    return ing.quantity.unit;
+  })
+}
+
+function combineRecipeIngInfo() {
+
+}
+
+//make a 3rd function
+//invoke that 3rd function at end of bringUserToSingleRecipePage
+//marry the data from recipeData and recipeCard
+//invoke that getRecipeNames with new combined ingData
+//dive in the interpolation to present new data
+
+
+// function combineIngWithQuantity(recipeCard) {
+
+  // return `${getRecipeIngNames(recipeCard)}`
+// }
+
+// ${getMeasurementOfIng(recipeCard)
+// function getRecipeInstructions() {
+//
+// }
+//
+// function bringUserBackToAllRecipesPage() {
+//   // upon click of the 'back to recipes page'
+//   // clears single recipe page and brings user back to main recipe lists page
+// }
