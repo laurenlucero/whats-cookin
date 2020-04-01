@@ -23,7 +23,7 @@ describe('Ingredient', function() {
     });
 
     it('should have an estimated cost in cents', function() {
-      expect(ingredient1.estimatedCostInCents).to.equal(142)
+      expect(ingredient1.estimatedCostInCents).to.equal(142);
     });
 
 });
