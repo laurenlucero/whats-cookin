@@ -3,6 +3,7 @@ let currentUser;
 let mainPage = document.querySelector('.main-page');
 let recipePage = document.querySelector('.recipe-page');
 let allIngredients;
+let instructionsHolder;
 
 document.addEventListener('click', clickHandler);
 
@@ -127,12 +128,12 @@ function bringUserToSingleRecipePage(recipeCard) {
   </section>
   <div class="instructions">
     <ol class="instructions-holder">
-      <li>${recipeCard.instructions}</li>
     </ol>
   </div>
   <input class="back-to-home-btn" type="button" value="See all recipes">`
   getRecipeIngNames(recipeCard);
   getMeasurementOfIng(recipeCard);
+  displayRecipeInstructions(recipeCard);
 }
 
 function getRecipeIngNames(recipeCard) {
@@ -165,6 +166,16 @@ function combineRecipeIngInfo() {
 //invoke that getRecipeNames with new combined ingData
 //dive in the interpolation to present new data
 
+function displayRecipeInstructions(recipeCard) {
+  instructionsHolder = document.querySelector('.instructions-holder');
+  let instructions = recipeCard.getInstructions();
+  let allInstructions = instructions.map(inst => {
+    return inst.instruction;
+  })
+  allInstructions.map(item => {
+    instructionsHolder.insertAdjacentHTML('beforeend', `<li>${item}</li>`);
+  })
+}
 
 // function combineIngWithQuantity(recipeCard) {
 
