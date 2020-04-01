@@ -43,13 +43,20 @@ function addRecipeToFavs(event) {
   event.target.classList.remove('far', 'fa-heart', 'unchecked-heart');
   event.target.classList.add('fas', 'fa-heart', 'checked-heart');
   let clickedRecipe = allRecipes.find(recipe => {
-    recipe.name === event.target.parentElement.children[0].innerText;
+    if(event.target.parentElement.children[0].innerText === recipe.name) {
       return recipe;
+    }
   })
-    currentUser.addToFavorites(clickedRecipe);
+  currentUser.addToFavorites(clickedRecipe);
 }
 
 function removeRecipeFromFavs(event) {
   event.target.classList.remove('fas', 'fa-heart', 'checked-heart');
   event.target.classList.add('far', 'fa-heart', 'unchecked-heart');
+  let clickedRecipe = allRecipes.find(recipe => {
+    if (recipe.name === event.target.parentElement.children[0].innerText) {
+      return recipe;
+    }
+  })
+  currentUser.removeFromFavorites(clickedRecipe);
 }
