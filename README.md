@@ -5,7 +5,7 @@ We followed project specifications to make a working application and implemented
 
 To view this application, fork and clone this repo.
 
-![image](https://user-images.githubusercontent.com/54958511/78199382-c46a7580-7448-11ea-84fa-598ae38d850a.png)
+![app-gif](https://media.giphy.com/media/cj2MD7Ydr7jcxsZQ4f/giphy.gif)
 
 ## MVP & Future Iterations
 In this iteration of the application, users can view recipes, favorite recipes and choose recipes to cook.
