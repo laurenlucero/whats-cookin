@@ -5,6 +5,12 @@ We followed project specifications to make a working application and implemented
 
 To view this application, fork and clone this repo.
 
+![image](https://user-images.githubusercontent.com/54958511/78199382-c46a7580-7448-11ea-84fa-598ae38d850a.png)
+
 ## MVP & Future Iterations
 In this iteration of the application, users can view recipes, favorite recipes and choose recipes to cook.
 Future iterations would allow users to filter favorites and recipes to cook, as well as search recipes by name, ingredient or tag. Users would also be able to compare ingredients in their pantry to ingredients in a recipe then get a shopping list of amounts and estimated cost.
+
+## Contributors
+Léah Winters https://github.com/LeahWinters
+Lauren Lucero https://github.com/laurenlucero
