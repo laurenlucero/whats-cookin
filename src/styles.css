@@ -44,7 +44,7 @@ h2 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-right: 1em;
+  padding-right: 2.1em;
   width: 50%;
 }
 
@@ -53,12 +53,19 @@ h2 {
   display: flex;
   flex-direction: row;
   height: 2em;
-  width: 18em;
+  width: 21em;
+}
+
+.search-icon {
+  cursor: pointer;
+  font-size: 1.5em;
 }
 
 .search-input {
   border-radius: .2em;
   font-family: 'Nunito Sans', sans-serif;
+  font-size: 1em;
+  height: 80%;
   padding: .3em;
   width: 100%;
 }
@@ -66,6 +73,7 @@ h2 {
 .heart-btn,
 .bookmark-btn {
   display: flex;
+  cursor: pointer;
   flex-direction: row;
   align-items: center;
   width: 11em;
@@ -102,11 +110,16 @@ h2 {
 
 .recipe-img {
   border-radius: .2em .2em 0 0;
+  cursor: pointer;
   width: 100%;
 }
 
-/* recipe page */
+.fa-heart,
+.fa-bookmark {
+  cursor: pointer;
+}
 
+/* recipe page */
 
 .recipe {
   display: flex;
@@ -138,7 +151,17 @@ h3 {
   font-size: 1.2em;
   font-weight: bold;
   margin: 0;
-  margin-bottom: -5%;  
+  margin-bottom: -5%;
+}
+
+.ing-amounts-holder {
+  width: 13em;
+}
+
+.ing-amounts {
+  list-style-type: none;
+  padding-top: 0.9em;
+  padding-left: 0.5em;  
 }
 
 .missing-ing-dets {
@@ -158,4 +181,10 @@ h3 {
 .instructions {
   padding-left: 0.3em;
   padding-top: 0.4em;
+}
+
+.back-to-home-btn {
+  font-size: 1em;
+  margin-left: 2em;
+  width: 9em;
 }
