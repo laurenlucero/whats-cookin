@@ -12,5 +12,5 @@ In this iteration of the application, users can view recipes, favorite recipes a
 Future iterations would allow users to filter favorites and recipes to cook, as well as search recipes by name, ingredient or tag. Users would also be able to compare ingredients in their pantry to ingredients in a recipe then get a shopping list of amounts and estimated cost.
 
 ## Contributors
--Lauren Lucero https://github.com/laurenlucero
--Léah Winters https://github.com/LeahWinters
+- [Lauren Lucero](https://github.com/laurenlucero)
+- [Léah Winters](https://github.com/LeahWinters)
